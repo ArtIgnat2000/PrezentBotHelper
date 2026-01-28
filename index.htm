@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Bot для школьников</title>
+    <script type="text/javascript" src="https://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=wQjz-G_IHlf-lu16znesr3x1vhPOBRbeLi4UjJTWzFqVajaCD0L_g6E1vWhYKs9Hh6djh4W9WB1CdkNB37B-I_a5_y7rJRLuR4UYH8MYa9gc5W3oRSuRafsj0LImjJ47siofROoEgdiWRCmKRQdGnzlnsa9MDreaj3pYuGeOQU7PpRZHzpZH9r2xhXfeRlRjWaTFkdPyhNCzu6XOAocOjApx0frxt1sQwsz564t5Fu16rZvhsBsHQhbVQowwrRTvIGnkz_4cgy9d_F3FQkH-sAk_vJ754NLqL1hgI3YZDhPONdrUDeplVUoNMoFhPCZT9yRQ5Ym-WNOZVggP5ftUanwMz-O3gm-6fy_rYLj9c9DTP3LTOeFYlnEruZpU__vm6j1COIy1fDZzMIs9-alMG1KhezW1DusapNycgQ2eswcjnhHZgh1Gmi9GDalcQK0jWN208mxtPRy6SCe-kY6TYMpOt5rDtMpcDW58Kn7bCV8AH8X9b_nlrNnDYBVVEZfAA_3FbTTBttl6Xza1vCg6MOKHhzMfqbv8OE9AOpOS1iEqH5oAXXXj6reBwJtmpgI8xOJBrhut7RjK8E-aXfGrVKERTK4H6Kb5Al7bbzYGUH7zgkzAJbOdDOQUXKg1lnjE9Ly1jbag7yWxE0-cLXVVcyf3sSuwWCMvHzpgohPvXxxo_4sv3CgyD1KpBN357nwuHh1fSnbgiS7os7fendkF1nM3JPF-0yLc00uCyqCgJmNIJvTfWFERGR_GhNug5-XziI-sev4OmCZXwxqVyiSJSRktVymysNlfI5Z1cn__-eFxKc--dXuEdAnMTmMmEMOFJW0PAcI8yYM8-geTmoioCP4NqCd7HGTBEMTlGHJFdbGIzeCX03YOam7MwSdSA5pZTbsSJQJ1cYclhAjY-VEm2d2e1WvnBsPyS-lyHRhPjp6L2cXAEZjpPun79cCr22YDam44J338gWhL61uQ5cy6MZEQtUbqLAUzz0Gk7AgBkdMho5LLBOf1ZYkz27VwuJ-Of0j3AZk8AENrdtOQdlewIj3VNdzBglfa79EHGMPQ3bZbxaiVH2svge9MIZ38mhYetMaK9sVLHx-TR_-wHzKGoAZ5qCG-MXdLjdxPoi_OX3wR-jnSh1LNucBdYjLN5-hS4zVMIif1u5gfNuWBPLa4xbcEbn7xC81iKRNnpbFloU4aNvZWhogZw15ZZvTScPsRBrZ0xFdoUKV8QCRBmXRr3deWS1XL2wOGx-BFD49FN6xk26C41OaRVUYKXDyAELd1alJpg43c9RZG1egdZ0eYFP2WGahBGOj5OBv6emTsaHpkkQpgt0AW1rqekhx8bhypcf9kefLJGb8UK2yugmCm-gIFJaY8ixbMpOEGVxlTdw_cpxVk9V5w4CAtuPB_XQ-ysNALHVwyJay8bxal50oARGabYRlsbjdl7IdaRm-LfGxhFT4B8bzoHl4W2OzTG45mI_9Y76EiOIziW92sbLiuGJy8M7Hv5TawO4qtAHwbhp-BbJqX9CP_k-d1nc16gT5bi3LtWgWLgC3GVDypcrtsmdjDwlmPSVmejAuJQqkHAilqs57DsfMK3x6LikqC-sau-xOIrZXnZUMfLRg_bq6Wb5AW5dxi-izpGQTOQ1ZGGrOxzW6Isi7JDleZhiUTckxlaYjvTBhEM17dqvKJ52NqzYK7Wlrr4V3Vd7uC5yMmnHmqn9msXJV9aIk8Opa8EhrJNSRk9eZB-iCSEVdWAFUqHOKuHO6kTg5Z_HtXpJEBvwr8fcDnhkZq4XfvNy4VjNd-zhLvlRn5yiDWJN4UT_b35boW7j-UkXpGlwmnvICBd_GM0UPdiRp7nlqTcYFVT7RJrvKs2cYefS0Y2awmwfAxKNYMX8mXuTj-c6kgohR9OlHYkSIMIFEqfxLpVWf4RgLBdNkeTllzOkr53DTvZMLhidjeni15xrvs72LLOEGqlkw3_Qi2gq2LMeoj2udLe3_dp3NOLUjBuJqlp-Nfyj-27dOKF4yU5SwdkxniRCPqS6qUzUF6GxOZ9nmjV87JjP4XcRkVZMtknnRrAuxDQAt9xT44UHH3U7FBaBHoTZGCi65gMMGDsXx05iZgVSsdIhraOajQ963YK7Q28WSQv6OWurl9sTjx56KS2aqpY5mJv32JAW1WJ9eoNljcUPohkLAqqIm_Fm4vkQDmivx2-pUV-TPdxF7f1yTj432Eg5DO-aDiWB-nAaIYDEq00Yn0txwQD8wPMB4fol5ctCLIieAnLDh1ABauzrr-88_9QROvSbUI7A6kOXEEhk4nCGVwUgJ2" charset="UTF-8"></script><style>
+        /* Theme Variables */
+        :root {
+            --font-family-display: Arial, sans-serif;
+            --font-weight-display: 600;
+            --font-family-content: Arial, sans-serif;
+            --font-weight-content: 400;
+            --font-size-content: 16px;
+            --line-height-content: 1.4;
+        }
+
+        /* DARK THEME */
+        body.theme-dark {
+            --color-bg-base: #0f172a;
+            --color-bg-elevated: #020617;
+            --color-bg-surface: #1e293b;
+            --color-bg-muted: #334155;
+            --color-text-primary: #f1f5f9;
+            --color-text-secondary: #cbd5e1;
+            --color-text-muted: #94a3b8;
+            --color-text-accent: #38bdf8;
+            --color-primary: #38bdf8;
+            --color-primary-foreground: #0f172a;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-content);
+            font-weight: var(--font-weight-content);
+            font-size: var(--font-size-content);
+            line-height: var(--line-height-content);
+            overflow-x: hidden;
+            background-color: var(--color-bg-base);
+        }
+
+        /* Slide Container */
+        .slide {
+            width: 960px;
+            height: 540px;
+            margin: 0 auto 20px;
+            display: flex;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .slide {
+                width: 90vw;
+                max-width: 960px;
+                height: auto;
+                aspect-ratio: 16 / 9;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                width: 95vw;
+                margin: 0 auto 15px;
+            }
+
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.25rem; }
+
+            .text-6xl { font-size: 2rem; }
+            .text-5xl { font-size: 1.75rem; }
+            .text-4xl { font-size: 1.5rem; }
+            .text-2xl { font-size: 1.125rem; }
+            .text-xl { font-size: 1rem; }
+            .text-lg { font-size: 0.95rem; }
+
+            .p-16 { padding: 2rem; }
+            .row { flex-direction: column; }
+            .gap-lg { gap: 1rem; }
+
+            ul, ol {
+                margin-left: 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            pre {
+                font-size: 0.8rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide {
+                width: 98vw;
+                margin: 0 auto 10px;
+            }
+
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.25rem; }
+            h3 { font-size: 1rem; }
+
+            .text-6xl { font-size: 1.5rem; }
+            .text-2xl { font-size: 0.95rem; }
+            .text-xl { font-size: 0.9rem; }
+            .text-lg { font-size: 0.85rem; }
+
+            .p-16 { padding: 1rem; }
+            .mb-4 { margin-bottom: 0.5rem; }
+            .mb-6 { margin-bottom: 1rem; }
+            .mb-8 { margin-bottom: 1.5rem; }
+
+            ul, ol {
+                margin-left: 1rem;
+                font-size: 0.85rem;
+                line-height: 1.6;
+            }
+
+            li { margin-bottom: 0.5rem; }
+
+            .theme-toggle {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.75rem;
+            }
+
+            .slide::after {
+                font-size: 0.75rem;
+                bottom: 0.5rem;
+                right: 0.75rem;
+            }
+
+            pre {
+                padding: 1rem !important;
+                font-size: 0.7rem !important;
+            }
+
+            .row.gap-xl {
+                gap: 0.5rem;
+            }
+
+            .fill-width {
+                padding: 1rem !important;
+            }
+        }
+
+        /* Layout Utilities */
+        .row { flex-direction: row; }
+        .col { flex-direction: column; }
+        .center {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .space-between { justify-content: space-between; }
+        .items-center { align-items: center; }
+        .items-start { align-items: flex-start; }
+        .fill-width { flex: 1; }
+        .fill-height { flex: 1; display: flex; flex-direction: column; }
+
+        /* Spacing */
+        .gap-sm { gap: 0.5rem; }
+        .gap-md { gap: 1rem; }
+        .gap-lg { gap: 1.5rem; }
+        .gap-xl { gap: 2rem; }
+
+        .p-4 { padding: 1rem; }
+        .p-8 { padding: 2rem; }
+        .p-12 { padding: 3rem; }
+        .p-16 { padding: 4rem; }
+
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-8 { margin-top: 2rem; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-family-display);
+            font-weight: var(--font-weight-display);
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.25rem; }
+        h3 { font-size: 1.75rem; }
+        h4 { font-size: 1.5rem; }
+
+        .text-6xl { font-size: 3.75rem; }
+        .text-5xl { font-size: 3rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-base { font-size: 1rem; }
+        .text-sm { font-size: 0.875rem; }
+
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .font-medium { font-weight: 500; }
+
+        .text-center { text-align: center; }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 2rem;
+            line-height: 1.8;
+        }
+
+        ul li { list-style: disc; }
+        li { margin-bottom: 0.75rem; }
+        li:last-child { margin-bottom: 0; }
+
+        /* Card Styles */
+        .card-rect {
+            padding: 2rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .opacity-90 { opacity: 0.9; }
+
+        /* Slide Counter */
+        .slide::after {
+            content: attr(data-slide);
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #1e293b;
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: #38bdf8;
+            color: #0f172a;
+        }
+
+        /* Light Theme */
+        body.theme-light {
+            --color-bg-base: #ffffff;
+            --color-bg-elevated: #f8fafc;
+            --color-bg-surface: #f1f5f9;
+            --color-bg-muted: #e2e8f0;
+            --color-text-primary: #0f172a;
+            --color-text-secondary: #475569;
+            --color-text-muted: #64748b;
+            --color-text-accent: #0284c7;
+            --color-primary: #0284c7;
+            --color-primary-foreground: #ffffff;
+        }
+
+        body.theme-light .slide::after {
+            color: #64748b;
+        }
+
+        body.theme-light .theme-toggle {
+            background-color: #e2e8f0;
+            border-color: #0284c7;
+            color: #0284c7;
+        }
+
+        body.theme-light .theme-toggle:hover {
+            background-color: #0284c7;
+            color: #ffffff;
+        }
+
+    </style>
+</head>
+<body class="theme-dark">
+    <button class="theme-toggle" onclick="toggleTheme()">☀️ День</button>
+
+    <!-- Slide 1: Title Slide -->
+    <section class="slide p-16 col center" data-slide="1/15" style="background-color: #020617; color: #f1f5f9;">
+        <h1 class="text-6xl mb-4" style="color: #38bdf8;">Telegram Bot</h1>
+        <p class="text-2xl mb-8" style="color: #cbd5e1;">Умный помощник</p>
+        <p class="text-lg" style="color: #94a3b8;">Проект Виктора Игнатьева | НААШ 186</p>
+    </section>
+
+    <!-- Slide 2: For Whom -->
+    <section class="slide p-16 col" data-slide="2/15" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-8" style="color: #38bdf8;">Для кого этот бот?</h2>
+        <div class="row gap-lg fill-height">
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 2rem; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);">
+                <h3 style="color: #38bdf8;">👨‍🎓 Школьники</h3>
+                <p style="color: #cbd5e1;">Помощник в учёбе и организации дня</p>
+            </div>
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 2rem; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);">
+                <h3 style="color: #38bdf8;">👨‍👩‍👧 Родители</h3>
+                <p style="color: #cbd5e1;">Контроль расписания и успехов</p>
+            </div>
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 2rem; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);">
+                <h3 style="color: #38bdf8;">👵👴 Бабушки и дедушки</h3>
+                <p style="color: #cbd5e1;">Следить за новостями из школы</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: What Bot Can Do -->
+    <section class="slide p-16 col" data-slide="3/15" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-6" style="color: #38bdf8;">Что умеет делать бот?</h2>
+        <ul class="text-lg" style="color: #cbd5e1;">
+            <li><strong style="color: #38bdf8;">Расписание:</strong> уроков, звонков, питания, каникул, тренировок, кружков</li>
+            <li><strong style="color: #38bdf8;">Шкала оценок</strong> — полезная справка</li>
+            <li><strong style="color: #38bdf8;">V labs</strong> — школа программирования с задачами</li>
+            <li><strong style="color: #38bdf8;">Учебники</strong> — доступ к любой странице по номеру</li>
+            <li><strong style="color: #38bdf8;">Библиотека</strong> — каталог книг и материалов</li>
+        </ul>
+    </section>
+
+    <!-- Slide 4: How It Works -->
+    <section class="slide p-16 col center" data-slide="4/15" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-8" style="color: #38bdf8;">Как всё работает?</h2>
+        <div class="row gap-xl items-center fill-height">
+            <div style="text-align: center; flex: 1;">
+                <p style="font-size: 1.5rem; color: #cbd5e1; margin-bottom: 1rem;"><strong>⚡ Быстро</strong></p>
+                <p style="font-size: 1rem; color: #94a3b8;">Мгновенный ответ</p>
+            </div>
+            <div style="text-align: center; flex: 1;">
+                <p style="font-size: 1.5rem; color: #cbd5e1; margin-bottom: 1rem;"><strong>✨ Удобно</strong></p>
+                <p style="font-size: 1rem; color: #94a3b8;">В Telegram, без логина</p>
+            </div>
+            <div style="text-align: center; flex: 1;">
+                <p style="font-size: 1.5rem; color: #cbd5e1; margin-bottom: 1rem;"><strong>🕐 24/7</strong></p>
+                <p style="font-size: 1rem; color: #94a3b8;">Всегда доступен</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: What is Telegram Bot -->
+    <section class="slide p-16 col" data-slide="5/15" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-6" style="color: #38bdf8;">Что такое Telegram-бот?</h2>
+        <ul class="text-lg" style="color: #cbd5e1;">
+            <li>Специальная программа в Telegram, реагирующая на команды</li>
+            <li>Автоматически обрабатывает сообщения и отправляет ответы</li>
+            <li>Работает 24/7 на серверах Telegram</li>
+            <li>Может выполнять полезные задачи для пользователей</li>
+        </ul>
+    </section>
+
+    <!-- Slide 6: Why Create Bots -->
+    <section class="slide p-16 col" data-slide="6/15" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-6" style="color: #38bdf8;">Зачем нужны Telegram-боты?</h2>
+        <ul class="text-lg" style="color: #cbd5e1;">
+            <li>Автоматизация повторяющихся задач</li>
+            <li>Помощь в учёбе и организации времени</li>
+            <li>Игры и развлечения для пользователей</li>
+            <li>Рассылка важной информации</li>
+        </ul>
+    </section>
+
+    <!-- Slide 7: Technologies -->
+    <section class="slide p-16 col" data-slide="7/15" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-6" style="color: #38bdf8;">Технологии для создания</h2>
+        <ul class="text-lg" style="color: #cbd5e1;">
+            <li><strong style="color: #38bdf8;">Python</strong> — язык программирования</li>
+            <li><strong style="color: #38bdf8;">Telegram Bot API</strong> — интерфейс для работы с платформой</li>
+            <li><strong style="color: #38bdf8;">Aiogram</strong> — асинхронная библиотека для создания Telegram-ботов на Python</li>
+            <li><strong style="color: #38bdf8;">BotFather</strong> — инструмент для регистрации ботов</li>
+        </ul>
+    </section>
+
+    <!-- Slide 8: How Bot Works -->
+    <section class="slide p-16 col" data-slide="8/15" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-8" style="color: #38bdf8;">Как работает бот? (Схема)</h2>
+        <div style="display: flex; justify-content: space-around; align-items: center; height: 300px;">
+            <div style="text-align: center;">
+                <p style="font-size: 1.25rem; color: #cbd5e1;"><strong>Пользователь</strong></p>
+                <p style="font-size: 2rem; margin-top: 1rem;">👤</p>
+            </div>
+            <p style="font-size: 1.5rem; color: #38bdf8;">→</p>
+            <div style="text-align: center;">
+                <p style="font-size: 1.25rem; color: #cbd5e1;"><strong>Telegram API</strong></p>
+                <p style="font-size: 2rem; margin-top: 1rem;">📡</p>
+            </div>
+            <p style="font-size: 1.5rem; color: #38bdf8;">→</p>
+            <div style="text-align: center;">
+                <p style="font-size: 1.25rem; color: #cbd5e1;"><strong>Бот (Python)</strong></p>
+                <p style="font-size: 2rem; margin-top: 1rem;">🤖</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 9: Bot Commands -->
+    <section class="slide p-16 col" data-slide="9/13" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-6" style="color: #38bdf8;">Команды бота</h2>
+        <ul class="text-lg" style="color: #cbd5e1;">
+            <li>/start — начать работу</li>
+            <li>/menu — главное меню</li>
+            <li>/help — справка доступных командах</li>
+            <li>/info — информация</li>
+        </ul>
+    </section>
+
+    <!-- Slide 10: Python Code Example -->
+    <section class="slide p-16 col" data-slide="10/15" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-4" style="color: #38bdf8;">Пример кода на Python</h2>
+        <pre style="background-color: #1e293b; color: #38bdf8; padding: 1.5rem; border-radius: 8px; font-size: 0.95rem; overflow-x: auto; margin-top: 1rem;"><code>from telegram import Update
+from telegram.ext import Application
+
+async def start(update, context):
+    await update.message.reply_text(
+        'Привет! Я твой помощник 🤖'
+    )
+
+async def help_command(update, context):
+    await update.message.reply_text(
+        '/start - начало\n/help - помощь'
+    )</code></pre>
+    </section>
+
+    <!-- Slide 11: Getting Started -->
+    <section class="slide p-16 col" data-slide="11/15" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-6" style="color: #38bdf8;">Как разработать?</h2>
+        <ul class="text-lg" style="color: #cbd5e1;">
+            <li>Установить Python на компьютер</li>
+            <li>Создать бота через @BotFather (получить токен)</li>
+            <li>Установить библиотеку Aiogram</li>
+            <li>Написать код программы</li>
+            <li>Запустить бота и тестировать</li>
+        </ul>
+    </section>
+
+    <!-- Slide 12: Tasks in Development -->
+    <section class="slide p-16 col" data-slide="12/14" style="background-color: #0f172a; color: #f1f5f9;">
+        <h2 class="mb-6" style="color: #38bdf8;">Задачи в разработке</h2>
+        <div class="row gap-lg fill-height">
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 2rem; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);">
+                <h3 style="color: #38bdf8;">📚 Учебники</h3>
+                <p style="color: #cbd5e1;">Доступ к любой странице по номеру</p>
+            </div>
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 2rem; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);">
+                <h3 style="color: #38bdf8;">🏫 Библиотека</h3>
+                <p style="color: #cbd5e1;">Каталог книг и материалов</p>
+            </div>
+            <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 2rem; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);">
+                <h3 style="color: #38bdf8;">🤖 ИИ ассистент</h3>
+                <p style="color: #cbd5e1;">Помощь с домашней работой и объяснением тем</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 13: Thank You -->
+    <section class="slide p-16 col center" data-slide="14/14" style="background-color: #020617; color: #f1f5f9;">
+        <h2 class="text-5xl mb-6" style="color: #38bdf8;">Спасибо за внимание!</h2>
+        <p class="text-xl" style="color: #cbd5e1;">Начни пользоваться ботом уже сегодня 🚀</p>
+        <p class="text-sm mt-8" style="color: #94a3b8;">Вопросы?</p>
+    </section>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.theme-toggle');
+            const slides = document.querySelectorAll('.slide');
+            const cards = document.querySelectorAll('[data-card]');
+            
+            if (body.classList.contains('theme-dark')) {
+                body.classList.remove('theme-dark');
+                body.classList.add('theme-light');
+                button.textContent = '🌙 Ночь';
+                
+                // Обновляем фоны слайдов на светлые тона
+                slides.forEach(slide => {
+                    const bgColor = slide.getAttribute('data-bg-dark');
+                    if (bgColor === '#020617' || bgColor === '#0f172a') {
+                        slide.style.backgroundColor = '#ffffff';
+                    }
+                });
+                
+                // Обновляем текст на тёмный
+                slides.forEach(slide => {
+                    slide.style.color = '#0f172a';
+                });
+                
+                // Обновляем цвета заголовков
+                slides.forEach(slide => {
+                    const headings = slide.querySelectorAll('h1, h2, h3, h4, h5, h6');
+                    headings.forEach(h => {
+                        if (h.style.color === '#38bdf8' || h.style.color === 'rgb(56, 189, 248)') {
+                            h.style.color = '#0284c7';
+                        }
+                    });
+                });
+                
+                // Обновляем цвета текста в слайдах
+                slides.forEach(slide => {
+                    const allElements = slide.querySelectorAll('[style*="color"]');
+                    allElements.forEach(el => {
+                        if (el.style.color === '#f1f5f9' || el.style.color === 'rgb(241, 245, 249)') {
+                            el.style.color = '#0f172a';
+                        } else if (el.style.color === '#cbd5e1' || el.style.color === 'rgb(203, 213, 225)') {
+                            el.style.color = '#475569';
+                        } else if (el.style.color === '#94a3b8' || el.style.color === 'rgb(148, 163, 184)') {
+                            el.style.color = '#64748b';
+                        } else if (el.style.color === '#38bdf8' || el.style.color === 'rgb(56, 189, 248)') {
+                            el.style.color = '#0284c7';
+                        }
+                    });
+                });
+                
+                // Обновляем фоны карточек
+                cards.forEach(card => {
+                    if (card.style.backgroundColor === '#1e293b' || card.style.backgroundColor === 'rgb(30, 41, 59)') {
+                        card.style.backgroundColor = '#f1f5f9';
+                    }
+                });
+                
+                // Обновляем фоны pre/code
+                slides.forEach(slide => {
+                    const pres = slide.querySelectorAll('pre');
+                    pres.forEach(pre => {
+                        if (pre.style.backgroundColor === '#1e293b') {
+                            pre.style.backgroundColor = '#f1f5f9';
+                            pre.style.color = '#0284c7';
+                        }
+                    });
+                });
+                
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('theme-light');
+                body.classList.add('theme-dark');
+                button.textContent = '☀️ День';
+                
+                // Восстанавливаем тёмные тона
+                slides.forEach(slide => {
+                    const bgColor = slide.getAttribute('data-bg-dark');
+                    if (bgColor) {
+                        slide.style.backgroundColor = bgColor;
+                    } else {
+                        slide.style.backgroundColor = '#0f172a';
+                    }
+                });
+                
+                // Восстанавливаем светлый текст
+                slides.forEach(slide => {
+                    slide.style.color = '#f1f5f9';
+                });
+                
+                // Восстанавливаем цвета заголовков
+                slides.forEach(slide => {
+                    const headings = slide.querySelectorAll('h1, h2, h3, h4, h5, h6');
+                    headings.forEach(h => {
+                        if (h.style.color === '#0284c7' || h.style.color === 'rgb(2, 132, 199)') {
+                            h.style.color = '#38bdf8';
+                        }
+                    });
+                });
+                
+                // Восстанавливаем цвета текста в слайдах
+                slides.forEach(slide => {
+                    const allElements = slide.querySelectorAll('[style*="color"]');
+                    allElements.forEach(el => {
+                        if (el.style.color === '#0f172a' || el.style.color === 'rgb(15, 23, 42)') {
+                            el.style.color = '#f1f5f9';
+                        } else if (el.style.color === '#475569' || el.style.color === 'rgb(71, 85, 105)') {
+                            el.style.color = '#cbd5e1';
+                        } else if (el.style.color === '#64748b' || el.style.color === 'rgb(100, 116, 139)') {
+                            el.style.color = '#94a3b8';
+                        } else if (el.style.color === '#0284c7' || el.style.color === 'rgb(2, 132, 199)') {
+                            el.style.color = '#38bdf8';
+                        }
+                    });
+                });
+                
+                // Восстанавливаем фоны карточек
+                cards.forEach(card => {
+                    if (card.style.backgroundColor === '#f1f5f9' || card.style.backgroundColor === 'rgb(241, 245, 249)') {
+                        card.style.backgroundColor = '#1e293b';
+                    }
+                });
+                
+                // Восстанавливаем фоны pre/code
+                slides.forEach(slide => {
+                    const pres = slide.querySelectorAll('pre');
+                    pres.forEach(pre => {
+                        if (pre.style.backgroundColor === '#f1f5f9') {
+                            pre.style.backgroundColor = '#1e293b';
+                            pre.style.color = '#38bdf8';
+                        }
+                    });
+                });
+                
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme preference
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            const body = document.body;
+            const button = document.querySelector('.theme-toggle');
+            
+            if (savedTheme === 'light') {
+                body.classList.remove('theme-dark');
+                body.classList.add('theme-light');
+                button.textContent = '🌙 Ночь';
+                
+                // Применяем светлую тему к слайдам
+                const slides = document.querySelectorAll('.slide');
+                slides.forEach(slide => {
+                    slide.style.backgroundColor = '#ffffff';
+                    slide.style.color = '#0f172a';
+                });
+                
+                const allElements = document.querySelectorAll('[style*="color"]');
+                allElements.forEach(el => {
+                    if (el.style.color === '#f1f5f9') el.style.color = '#0f172a';
+                    if (el.style.color === '#cbd5e1') el.style.color = '#475569';
+                    if (el.style.color === '#94a3b8') el.style.color = '#64748b';
+                    if (el.style.color === '#38bdf8') el.style.color = '#0284c7';
+                });
+                
+                const cards = document.querySelectorAll('[data-card], [style*="background-color: #1e293b"]');
+                cards.forEach(card => {
+                    if (card.style.backgroundColor === '#1e293b') card.style.backgroundColor = '#f1f5f9';
+                });
+                
+                const pres = document.querySelectorAll('pre');
+                pres.forEach(pre => {
+                    if (pre.style.backgroundColor === '#1e293b') {
+                        pre.style.backgroundColor = '#f1f5f9';
+                        pre.style.color = '#0284c7';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
