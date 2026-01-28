@@ -43,35 +43,36 @@
             line-height: var(--line-height-content);
             overflow-x: hidden;
             background-color: var(--color-bg-base);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Slide Container */
         .slide {
-            width: 960px;
-            height: 540px;
-            margin: 0 auto 20px;
+            width: 100%;
+            height: 100%;
             display: flex;
-            flex-shrink: 0;
+            flex-direction: column;
             position: relative;
             overflow: hidden;
+            flex: 1;
+            padding: 4rem;
+        }
+
+        .slide.hidden {
+            display: none;
         }
 
         /* Responsive Design */
         @media (max-width: 1024px) {
             .slide {
-                width: 90vw;
-                max-width: 960px;
-                height: auto;
-                aspect-ratio: 16 / 9;
+                width: 100%;
+                padding: 2rem;
             }
         }
 
         @media (max-width: 768px) {
-            .slide {
-                width: 95vw;
-                margin: 0 auto 15px;
-            }
-
             h1 { font-size: 2rem; }
             h2 { font-size: 1.5rem; }
             h3 { font-size: 1.25rem; }
@@ -95,14 +96,13 @@
             pre {
                 font-size: 0.8rem !important;
             }
+
+            .slide {
+                padding: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
-            .slide {
-                width: 98vw;
-                margin: 0 auto 10px;
-            }
-
             h1 { font-size: 1.5rem; }
             h2 { font-size: 1.25rem; }
             h3 { font-size: 1rem; }
@@ -130,12 +130,6 @@
                 font-size: 0.75rem;
             }
 
-            .slide::after {
-                font-size: 0.75rem;
-                bottom: 0.5rem;
-                right: 0.75rem;
-            }
-
             pre {
                 padding: 1rem !important;
                 font-size: 0.7rem !important;
@@ -148,11 +142,20 @@
             .fill-width {
                 padding: 1rem !important;
             }
+
+            .nav-btn {
+                padding: 0.5rem 0.75rem !important;
+                font-size: 0.75rem !important;
+            }
+
+            .slide {
+                padding: 0.5rem;
+            }
         }
 
         /* Layout Utilities */
-        .row { flex-direction: row; }
-        .col { flex-direction: column; }
+        .row { display: flex; flex-direction: row; }
+        .col { display: flex; flex-direction: column; }
         .center {
             justify-content: center;
             align-items: center;
@@ -232,13 +235,51 @@
         .opacity-90 { opacity: 0.9; }
 
         /* Slide Counter */
-        .slide::after {
-            content: attr(data-slide);
+        .slide-counter {
             position: absolute;
             bottom: 1rem;
             right: 1.5rem;
             font-size: 0.875rem;
             color: #94a3b8;
+        }
+
+        /* Navigation Controls */
+        .nav-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: var(--color-bg-surface);
+        }
+
+        .nav-btn {
+            background-color: #1e293b;
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background-color: #38bdf8;
+            color: #0f172a;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-info {
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+            min-width: 60px;
+            text-align: center;
         }
 
         /* Theme Toggle Button */
@@ -277,7 +318,7 @@
             --color-primary-foreground: #ffffff;
         }
 
-        body.theme-light .slide::after {
+        body.theme-light .slide-counter {
             color: #64748b;
         }
 
@@ -292,20 +333,36 @@
             color: #ffffff;
         }
 
+        body.theme-light .nav-btn {
+            background-color: #e2e8f0;
+            border-color: #0284c7;
+            color: #0284c7;
+        }
+
+        body.theme-light .nav-btn:hover:not(:disabled) {
+            background-color: #0284c7;
+            color: #ffffff;
+        }
+
+        body.theme-light .nav-controls {
+            background-color: #f1f5f9;
+        }
+
     </style>
 </head>
 <body class="theme-dark">
     <button class="theme-toggle" onclick="toggleTheme()">☀️ День</button>
 
     <!-- Slide 1: Title Slide -->
-    <section class="slide p-16 col center" data-slide="1/15" style="background-color: #020617; color: #f1f5f9;">
+    <section class="slide col center" data-slide-id="1" style="background-color: #020617; color: #f1f5f9;">
         <h1 class="text-6xl mb-4" style="color: #38bdf8;">Telegram Bot</h1>
         <p class="text-2xl mb-8" style="color: #cbd5e1;">Умный помощник</p>
         <p class="text-lg" style="color: #94a3b8;">Проект Виктора Игнатьева | НААШ 186</p>
+        <div class="slide-counter">1/13</div>
     </section>
 
     <!-- Slide 2: For Whom -->
-    <section class="slide p-16 col" data-slide="2/15" style="background-color: #0f172a; color: #f1f5f9;">
+    <section class="slide col hidden" data-slide-id="2" style="background-color: #0f172a; color: #f1f5f9;">
         <h2 class="mb-8" style="color: #38bdf8;">Для кого этот бот?</h2>
         <div class="row gap-lg fill-height">
             <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 2rem; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);">
@@ -321,10 +378,11 @@
                 <p style="color: #cbd5e1;">Следить за новостями из школы</p>
             </div>
         </div>
+        <div class="slide-counter">2/13</div>
     </section>
 
     <!-- Slide 3: What Bot Can Do -->
-    <section class="slide p-16 col" data-slide="3/15" style="background-color: #0f172a; color: #f1f5f9;">
+    <section class="slide col hidden" data-slide-id="3" style="background-color: #0f172a; color: #f1f5f9;">
         <h2 class="mb-6" style="color: #38bdf8;">Что умеет делать бот?</h2>
         <ul class="text-lg" style="color: #cbd5e1;">
             <li><strong style="color: #38bdf8;">Расписание:</strong> уроков, звонков, питания, каникул, тренировок, кружков</li>
@@ -333,10 +391,11 @@
             <li><strong style="color: #38bdf8;">Учебники</strong> — доступ к любой странице по номеру</li>
             <li><strong style="color: #38bdf8;">Библиотека</strong> — каталог книг и материалов</li>
         </ul>
+        <div class="slide-counter">3/13</div>
     </section>
 
     <!-- Slide 4: How It Works -->
-    <section class="slide p-16 col center" data-slide="4/15" style="background-color: #0f172a; color: #f1f5f9;">
+    <section class="slide col center hidden" data-slide-id="4" style="background-color: #0f172a; color: #f1f5f9;">
         <h2 class="mb-8" style="color: #38bdf8;">Как всё работает?</h2>
         <div class="row gap-xl items-center fill-height">
             <div style="text-align: center; flex: 1;">
@@ -352,10 +411,11 @@
                 <p style="font-size: 1rem; color: #94a3b8;">Всегда доступен</p>
             </div>
         </div>
+        <div class="slide-counter">4/13</div>
     </section>
 
     <!-- Slide 5: What is Telegram Bot -->
-    <section class="slide p-16 col" data-slide="5/15" style="background-color: #0f172a; color: #f1f5f9;">
+    <section class="slide col hidden" data-slide-id="5" style="background-color: #0f172a; color: #f1f5f9;">
         <h2 class="mb-6" style="color: #38bdf8;">Что такое Telegram-бот?</h2>
         <ul class="text-lg" style="color: #cbd5e1;">
             <li>Специальная программа в Telegram, реагирующая на команды</li>
@@ -363,10 +423,11 @@
             <li>Работает 24/7 на серверах Telegram</li>
             <li>Может выполнять полезные задачи для пользователей</li>
         </ul>
+        <div class="slide-counter">5/13</div>
     </section>
 
     <!-- Slide 6: Why Create Bots -->
-    <section class="slide p-16 col" data-slide="6/15" style="background-color: #0f172a; color: #f1f5f9;">
+    <section class="slide col hidden" data-slide-id="6" style="background-color: #0f172a; color: #f1f5f9;">
         <h2 class="mb-6" style="color: #38bdf8;">Зачем нужны Telegram-боты?</h2>
         <ul class="text-lg" style="color: #cbd5e1;">
             <li>Автоматизация повторяющихся задач</li>
@@ -374,10 +435,11 @@
             <li>Игры и развлечения для пользователей</li>
             <li>Рассылка важной информации</li>
         </ul>
+        <div class="slide-counter">6/13</div>
     </section>
 
     <!-- Slide 7: Technologies -->
-    <section class="slide p-16 col" data-slide="7/15" style="background-color: #0f172a; color: #f1f5f9;">
+    <section class="slide col hidden" data-slide-id="7" style="background-color: #0f172a; color: #f1f5f9;">
         <h2 class="mb-6" style="color: #38bdf8;">Технологии для создания</h2>
         <ul class="text-lg" style="color: #cbd5e1;">
             <li><strong style="color: #38bdf8;">Python</strong> — язык программирования</li>
@@ -385,10 +447,11 @@
             <li><strong style="color: #38bdf8;">Aiogram</strong> — асинхронная библиотека для создания Telegram-ботов на Python</li>
             <li><strong style="color: #38bdf8;">BotFather</strong> — инструмент для регистрации ботов</li>
         </ul>
+        <div class="slide-counter">7/13</div>
     </section>
 
     <!-- Slide 8: How Bot Works -->
-    <section class="slide p-16 col" data-slide="8/15" style="background-color: #0f172a; color: #f1f5f9;">
+    <section class="slide col hidden" data-slide-id="8" style="background-color: #0f172a; color: #f1f5f9;">
         <h2 class="mb-8" style="color: #38bdf8;">Как работает бот? (Схема)</h2>
         <div style="display: flex; justify-content: space-around; align-items: center; height: 300px;">
             <div style="text-align: center;">
@@ -406,10 +469,11 @@
                 <p style="font-size: 2rem; margin-top: 1rem;">🤖</p>
             </div>
         </div>
+        <div class="slide-counter">8/13</div>
     </section>
 
     <!-- Slide 9: Bot Commands -->
-    <section class="slide p-16 col" data-slide="9/13" style="background-color: #0f172a; color: #f1f5f9;">
+    <section class="slide col hidden" data-slide-id="9" style="background-color: #0f172a; color: #f1f5f9;">
         <h2 class="mb-6" style="color: #38bdf8;">Команды бота</h2>
         <ul class="text-lg" style="color: #cbd5e1;">
             <li>/start — начать работу</li>
@@ -417,10 +481,11 @@
             <li>/help — справка доступных командах</li>
             <li>/info — информация</li>
         </ul>
+        <div class="slide-counter">9/13</div>
     </section>
 
     <!-- Slide 10: Python Code Example -->
-    <section class="slide p-16 col" data-slide="10/15" style="background-color: #0f172a; color: #f1f5f9;">
+    <section class="slide col hidden" data-slide-id="10" style="background-color: #0f172a; color: #f1f5f9;">
         <h2 class="mb-4" style="color: #38bdf8;">Пример кода на Python</h2>
         <pre style="background-color: #1e293b; color: #38bdf8; padding: 1.5rem; border-radius: 8px; font-size: 0.95rem; overflow-x: auto; margin-top: 1rem;"><code>from telegram import Update
 from telegram.ext import Application
@@ -434,10 +499,11 @@ async def help_command(update, context):
     await update.message.reply_text(
         '/start - начало\n/help - помощь'
     )</code></pre>
+        <div class="slide-counter">10/13</div>
     </section>
 
     <!-- Slide 11: Getting Started -->
-    <section class="slide p-16 col" data-slide="11/15" style="background-color: #0f172a; color: #f1f5f9;">
+    <section class="slide col hidden" data-slide-id="11" style="background-color: #0f172a; color: #f1f5f9;">
         <h2 class="mb-6" style="color: #38bdf8;">Как разработать?</h2>
         <ul class="text-lg" style="color: #cbd5e1;">
             <li>Установить Python на компьютер</li>
@@ -446,10 +512,11 @@ async def help_command(update, context):
             <li>Написать код программы</li>
             <li>Запустить бота и тестировать</li>
         </ul>
+        <div class="slide-counter">11/13</div>
     </section>
 
     <!-- Slide 12: Tasks in Development -->
-    <section class="slide p-16 col" data-slide="12/14" style="background-color: #0f172a; color: #f1f5f9;">
+    <section class="slide col hidden" data-slide-id="12" style="background-color: #0f172a; color: #f1f5f9;">
         <h2 class="mb-6" style="color: #38bdf8;">Задачи в разработке</h2>
         <div class="row gap-lg fill-height">
             <div class="fill-width" style="background-color: #1e293b; color: #f1f5f9; padding: 2rem; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);">
@@ -465,171 +532,192 @@ async def help_command(update, context):
                 <p style="color: #cbd5e1;">Помощь с домашней работой и объяснением тем</p>
             </div>
         </div>
+        <div class="slide-counter">12/13</div>
     </section>
 
     <!-- Slide 13: Thank You -->
-    <section class="slide p-16 col center" data-slide="14/14" style="background-color: #020617; color: #f1f5f9;">
+    <section class="slide col center hidden" data-slide-id="13" style="background-color: #020617; color: #f1f5f9;">
         <h2 class="text-5xl mb-6" style="color: #38bdf8;">Спасибо за внимание!</h2>
         <p class="text-xl" style="color: #cbd5e1;">Начни пользоваться ботом уже сегодня 🚀</p>
         <p class="text-sm mt-8" style="color: #94a3b8;">Вопросы?</p>
+        <div class="slide-counter">13/13</div>
     </section>
 
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" onclick="prevSlide()">← Назад</button>
+        <span class="slide-info"><span id="currentSlide">1</span>/<span id="totalSlides">13</span></span>
+        <button class="nav-btn" id="nextBtn" onclick="nextSlide()">Вперёд →</button>
+    </div>
+
     <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        // Initialize and remember original dark-theme colors/backgrounds
+        (function initThemeData() {
+            slides.forEach(slide => {
+                if (!slide.getAttribute('data-bg-dark')) {
+                    const bg = slide.style.backgroundColor || getComputedStyle(slide).backgroundColor;
+                    slide.setAttribute('data-bg-dark', bg);
+                }
+                if (!slide.getAttribute('data-color-dark')) {
+                    const col = slide.style.color || getComputedStyle(slide).color;
+                    slide.setAttribute('data-color-dark', col);
+                }
+            });
+
+            const cards = document.querySelectorAll('[data-card], [style*="background-color: #1e293b"]');
+            cards.forEach(card => {
+                if (!card.getAttribute('data-card-bg')) {
+                    const bg = card.style.backgroundColor || getComputedStyle(card).backgroundColor;
+                    card.setAttribute('data-card-bg', bg);
+                }
+            });
+        })();
+
+        function updateSlideView() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlideIndex) {
+                    slide.classList.remove('hidden');
+                } else {
+                    slide.classList.add('hidden');
+                }
+            });
+
+            document.getElementById('currentSlide').textContent = currentSlideIndex + 1;
+            document.getElementById('prevBtn').disabled = currentSlideIndex === 0;
+            document.getElementById('nextBtn').disabled = currentSlideIndex === totalSlides - 1;
+
+            // Save current slide to localStorage
+            localStorage.setItem('currentSlide', currentSlideIndex);
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < totalSlides - 1) {
+                currentSlideIndex++;
+                updateSlideView();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                updateSlideView();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                nextSlide();
+                event.preventDefault();
+            } else if (event.key === 'ArrowLeft') {
+                prevSlide();
+                event.preventDefault();
+            }
+        });
+
         function toggleTheme() {
             const body = document.body;
             const button = document.querySelector('.theme-toggle');
-            const slides = document.querySelectorAll('.slide');
-            const cards = document.querySelectorAll('[data-card]');
-            
+            const cards = document.querySelectorAll('[data-card], [style*="background-color: #1e293b"], [data-card-bg]');
+
             if (body.classList.contains('theme-dark')) {
                 body.classList.remove('theme-dark');
                 body.classList.add('theme-light');
                 button.textContent = '🌙 Ночь';
-                
-                // Обновляем фоны слайдов на светлые тона
+
+                // Set slides to light backgrounds and dark text
                 slides.forEach(slide => {
-                    const bgColor = slide.getAttribute('data-bg-dark');
-                    if (bgColor === '#020617' || bgColor === '#0f172a') {
-                        slide.style.backgroundColor = '#ffffff';
-                    }
-                });
-                
-                // Обновляем текст на тёмный
-                slides.forEach(slide => {
+                    slide.style.backgroundColor = '#ffffff';
                     slide.style.color = '#0f172a';
                 });
-                
-                // Обновляем цвета заголовков
+
+                // Set headings to light-theme accent
                 slides.forEach(slide => {
                     const headings = slide.querySelectorAll('h1, h2, h3, h4, h5, h6');
-                    headings.forEach(h => {
-                        if (h.style.color === '#38bdf8' || h.style.color === 'rgb(56, 189, 248)') {
-                            h.style.color = '#0284c7';
-                        }
-                    });
+                    headings.forEach(h => h.style.color = '#0284c7');
                 });
-                
-                // Обновляем цвета текста в слайдах
-                slides.forEach(slide => {
-                    const allElements = slide.querySelectorAll('[style*="color"]');
-                    allElements.forEach(el => {
-                        if (el.style.color === '#f1f5f9' || el.style.color === 'rgb(241, 245, 249)') {
-                            el.style.color = '#0f172a';
-                        } else if (el.style.color === '#cbd5e1' || el.style.color === 'rgb(203, 213, 225)') {
-                            el.style.color = '#475569';
-                        } else if (el.style.color === '#94a3b8' || el.style.color === 'rgb(148, 163, 184)') {
-                            el.style.color = '#64748b';
-                        } else if (el.style.color === '#38bdf8' || el.style.color === 'rgb(56, 189, 248)') {
-                            el.style.color = '#0284c7';
-                        }
-                    });
-                });
-                
-                // Обновляем фоны карточек
+
+                // Card backgrounds -> light
                 cards.forEach(card => {
-                    if (card.style.backgroundColor === '#1e293b' || card.style.backgroundColor === 'rgb(30, 41, 59)') {
-                        card.style.backgroundColor = '#f1f5f9';
-                    }
+                    card.style.backgroundColor = '#f1f5f9';
                 });
-                
-                // Обновляем фоны pre/code
-                slides.forEach(slide => {
-                    const pres = slide.querySelectorAll('pre');
-                    pres.forEach(pre => {
-                        if (pre.style.backgroundColor === '#1e293b') {
-                            pre.style.backgroundColor = '#f1f5f9';
-                            pre.style.color = '#0284c7';
-                        }
-                    });
+
+                // Pre blocks -> light
+                const pres = document.querySelectorAll('pre');
+                pres.forEach(pre => {
+                    pre.style.backgroundColor = '#f1f5f9';
+                    pre.style.color = '#0284c7';
                 });
-                
+
                 localStorage.setItem('theme', 'light');
             } else {
                 body.classList.remove('theme-light');
                 body.classList.add('theme-dark');
                 button.textContent = '☀️ День';
-                
-                // Восстанавливаем тёмные тона
+
+                // Restore original slide backgrounds and colors
                 slides.forEach(slide => {
                     const bgColor = slide.getAttribute('data-bg-dark');
-                    if (bgColor) {
-                        slide.style.backgroundColor = bgColor;
-                    } else {
-                        slide.style.backgroundColor = '#0f172a';
-                    }
+                    const textColor = slide.getAttribute('data-color-dark');
+                    slide.style.backgroundColor = bgColor || '#0f172a';
+                    slide.style.color = textColor || '#f1f5f9';
                 });
-                
-                // Восстанавливаем светлый текст
-                slides.forEach(slide => {
-                    slide.style.color = '#f1f5f9';
-                });
-                
-                // Восстанавливаем цвета заголовков
+
+                // Restore headings
                 slides.forEach(slide => {
                     const headings = slide.querySelectorAll('h1, h2, h3, h4, h5, h6');
                     headings.forEach(h => {
-                        if (h.style.color === '#0284c7' || h.style.color === 'rgb(2, 132, 199)') {
-                            h.style.color = '#38bdf8';
-                        }
+                        const original = h.getAttribute('data-heading-dark');
+                        if (original) h.style.color = original;
+                        else h.style.color = '#38bdf8';
                     });
                 });
-                
-                // Восстанавливаем цвета текста в слайдах
-                slides.forEach(slide => {
-                    const allElements = slide.querySelectorAll('[style*="color"]');
-                    allElements.forEach(el => {
-                        if (el.style.color === '#0f172a' || el.style.color === 'rgb(15, 23, 42)') {
-                            el.style.color = '#f1f5f9';
-                        } else if (el.style.color === '#475569' || el.style.color === 'rgb(71, 85, 105)') {
-                            el.style.color = '#cbd5e1';
-                        } else if (el.style.color === '#64748b' || el.style.color === 'rgb(100, 116, 139)') {
-                            el.style.color = '#94a3b8';
-                        } else if (el.style.color === '#0284c7' || el.style.color === 'rgb(2, 132, 199)') {
-                            el.style.color = '#38bdf8';
-                        }
-                    });
-                });
-                
-                // Восстанавливаем фоны карточек
+
+                // Restore card backgrounds from saved attribute
                 cards.forEach(card => {
-                    if (card.style.backgroundColor === '#f1f5f9' || card.style.backgroundColor === 'rgb(241, 245, 249)') {
-                        card.style.backgroundColor = '#1e293b';
-                    }
+                    const orig = card.getAttribute('data-card-bg');
+                    if (orig) card.style.backgroundColor = orig;
+                    else card.style.backgroundColor = '#1e293b';
                 });
-                
-                // Восстанавливаем фоны pre/code
-                slides.forEach(slide => {
-                    const pres = slide.querySelectorAll('pre');
-                    pres.forEach(pre => {
-                        if (pre.style.backgroundColor === '#f1f5f9') {
-                            pre.style.backgroundColor = '#1e293b';
-                            pre.style.color = '#38bdf8';
-                        }
-                    });
+
+                // Restore pre blocks
+                const pres = document.querySelectorAll('pre');
+                pres.forEach(pre => {
+                    pre.style.backgroundColor = '#1e293b';
+                    pre.style.color = '#38bdf8';
                 });
-                
+
                 localStorage.setItem('theme', 'dark');
             }
         }
 
-        // Load saved theme preference
+        // Load saved theme preference and slide position
         window.addEventListener('DOMContentLoaded', function() {
             const savedTheme = localStorage.getItem('theme') || 'dark';
+            const savedSlide = parseInt(localStorage.getItem('currentSlide') || '0');
             const body = document.body;
             const button = document.querySelector('.theme-toggle');
-            
+
+            // Restore slide position
+            currentSlideIndex = savedSlide;
+            updateSlideView();
+
             if (savedTheme === 'light') {
                 body.classList.remove('theme-dark');
                 body.classList.add('theme-light');
                 button.textContent = '🌙 Ночь';
-                
-                // Применяем светлую тему к слайдам
-                const slides = document.querySelectorAll('.slide');
+
+                // Apply light theme to slides
                 slides.forEach(slide => {
                     slide.style.backgroundColor = '#ffffff';
                     slide.style.color = '#0f172a';
                 });
-                
+
+                // Update inline colored elements to light equivalents where practical
                 const allElements = document.querySelectorAll('[style*="color"]');
                 allElements.forEach(el => {
                     if (el.style.color === '#f1f5f9') el.style.color = '#0f172a';
@@ -637,18 +725,16 @@ async def help_command(update, context):
                     if (el.style.color === '#94a3b8') el.style.color = '#64748b';
                     if (el.style.color === '#38bdf8') el.style.color = '#0284c7';
                 });
-                
+
                 const cards = document.querySelectorAll('[data-card], [style*="background-color: #1e293b"]');
                 cards.forEach(card => {
-                    if (card.style.backgroundColor === '#1e293b') card.style.backgroundColor = '#f1f5f9';
+                    card.style.backgroundColor = '#f1f5f9';
                 });
-                
+
                 const pres = document.querySelectorAll('pre');
                 pres.forEach(pre => {
-                    if (pre.style.backgroundColor === '#1e293b') {
-                        pre.style.backgroundColor = '#f1f5f9';
-                        pre.style.color = '#0284c7';
-                    }
+                    pre.style.backgroundColor = '#f1f5f9';
+                    pre.style.color = '#0284c7';
                 });
             }
         });
