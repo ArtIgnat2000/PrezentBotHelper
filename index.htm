@@ -310,9 +310,9 @@
             --color-bg-elevated: #f8fafc;
             --color-bg-surface: #f1f5f9;
             --color-bg-muted: #e2e8f0;
-            --color-text-primary: #0f172a;
-            --color-text-secondary: #475569;
-            --color-text-muted: #64748b;
+            --color-text-primary: #000000;
+            --color-text-secondary: #000000;
+            --color-text-muted: #1a1a1a;
             --color-text-accent: #0284c7;
             --color-primary: #0284c7;
             --color-primary-foreground: #ffffff;
@@ -622,71 +622,88 @@ async def help_command(update, context):
         function toggleTheme() {
             const body = document.body;
             const button = document.querySelector('.theme-toggle');
-            const cards = document.querySelectorAll('[data-card], [style*="background-color: #1e293b"], [data-card-bg]');
 
             if (body.classList.contains('theme-dark')) {
+                // Switch to LIGHT theme
                 body.classList.remove('theme-dark');
                 body.classList.add('theme-light');
                 button.textContent = '🌙 Ночь';
 
-                // Set slides to light backgrounds and dark text
+                // Set all slides to light
                 slides.forEach(slide => {
                     slide.style.backgroundColor = '#ffffff';
-                    slide.style.color = '#0f172a';
+                    slide.style.color = '#000000';
                 });
 
-                // Set headings to light-theme accent
-                slides.forEach(slide => {
-                    const headings = slide.querySelectorAll('h1, h2, h3, h4, h5, h6');
-                    headings.forEach(h => h.style.color = '#0284c7');
+                // Set all text elements to black
+                document.querySelectorAll('*').forEach(el => {
+                    if (el.style.color && el.style.color !== '#0284c7' && el.style.color !== '#38bdf8') {
+                        el.style.color = '#000000';
+                    }
                 });
 
-                // Card backgrounds -> light
-                cards.forEach(card => {
-                    card.style.backgroundColor = '#f1f5f9';
+                // Force heading colors
+                document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(h => {
+                    h.style.color = '#0284c7';
                 });
 
-                // Pre blocks -> light
-                const pres = document.querySelectorAll('pre');
-                pres.forEach(pre => {
+                // Light card backgrounds
+                document.querySelectorAll('[style*="background-color"]').forEach(card => {
+                    if (card.style.backgroundColor === '#1e293b' || card.style.backgroundColor === '#020617') {
+                        card.style.backgroundColor = '#f1f5f9';
+                    }
+                    if (card.style.color) {
+                        card.style.color = '#000000';
+                    }
+                });
+
+                // Code blocks
+                document.querySelectorAll('pre').forEach(pre => {
                     pre.style.backgroundColor = '#f1f5f9';
                     pre.style.color = '#0284c7';
                 });
 
                 localStorage.setItem('theme', 'light');
             } else {
+                // Switch to DARK theme
                 body.classList.remove('theme-light');
                 body.classList.add('theme-dark');
                 button.textContent = '☀️ День';
 
-                // Restore original slide backgrounds and colors
+                // Restore dark backgrounds
                 slides.forEach(slide => {
                     const bgColor = slide.getAttribute('data-bg-dark');
-                    const textColor = slide.getAttribute('data-color-dark');
                     slide.style.backgroundColor = bgColor || '#0f172a';
-                    slide.style.color = textColor || '#f1f5f9';
+                    slide.style.color = '#f1f5f9';
                 });
 
-                // Restore headings
-                slides.forEach(slide => {
-                    const headings = slide.querySelectorAll('h1, h2, h3, h4, h5, h6');
-                    headings.forEach(h => {
-                        const original = h.getAttribute('data-heading-dark');
-                        if (original) h.style.color = original;
-                        else h.style.color = '#38bdf8';
-                    });
+                // Restore all light text colors
+                document.querySelectorAll('*').forEach(el => {
+                    const style = el.getAttribute('style');
+                    if (style && style.includes('color:')) {
+                        // Headings stay cyan
+                        if (el.tagName.match(/H[1-6]/)) {
+                            el.style.color = '#38bdf8';
+                        }
+                        // Everything else gets light gray, unless it's accent color
+                        else if (el.style.color !== '#38bdf8' && el.style.color !== '#0284c7') {
+                            el.style.color = '#cbd5e1';
+                        }
+                    }
                 });
 
-                // Restore card backgrounds from saved attribute
-                cards.forEach(card => {
-                    const orig = card.getAttribute('data-card-bg');
-                    if (orig) card.style.backgroundColor = orig;
-                    else card.style.backgroundColor = '#1e293b';
+                // Restore dark card backgrounds
+                document.querySelectorAll('[style*="background-color"]').forEach(card => {
+                    if (card.style.backgroundColor === '#f1f5f9') {
+                        card.style.backgroundColor = '#1e293b';
+                    }
+                    if (card.style.color) {
+                        card.style.color = '#f1f5f9';
+                    }
                 });
 
-                // Restore pre blocks
-                const pres = document.querySelectorAll('pre');
-                pres.forEach(pre => {
+                // Code blocks
+                document.querySelectorAll('pre').forEach(pre => {
                     pre.style.backgroundColor = '#1e293b';
                     pre.style.color = '#38bdf8';
                 });
@@ -714,27 +731,67 @@ async def help_command(update, context):
                 // Apply light theme to slides
                 slides.forEach(slide => {
                     slide.style.backgroundColor = '#ffffff';
-                    slide.style.color = '#0f172a';
+                    slide.style.color = '#000000';
                 });
 
-                // Update inline colored elements to light equivalents where practical
-                const allElements = document.querySelectorAll('[style*="color"]');
+                // Set all text elements to black
+                const allElements = document.querySelectorAll('*');
                 allElements.forEach(el => {
-                    if (el.style.color === '#f1f5f9') el.style.color = '#0f172a';
-                    if (el.style.color === '#cbd5e1') el.style.color = '#475569';
-                    if (el.style.color === '#94a3b8') el.style.color = '#64748b';
-                    if (el.style.color === '#38bdf8') el.style.color = '#0284c7';
+                    const style = el.getAttribute('style') || '';
+                    if (style.includes('color') && !style.includes('#0284c7') && !style.includes('#38bdf8')) {
+                        el.style.color = '#000000';
+                    }
                 });
 
-                const cards = document.querySelectorAll('[data-card], [style*="background-color: #1e293b"]');
+                const cards = document.querySelectorAll('[style*="background-color: #1e293b"]');
                 cards.forEach(card => {
-                    card.style.backgroundColor = '#f1f5f9';
+                    card.style.backgroundColor = '#f1f5f9 !important';
+                    card.style.color = '#000000 !important';
                 });
 
                 const pres = document.querySelectorAll('pre');
                 pres.forEach(pre => {
                     pre.style.backgroundColor = '#f1f5f9';
                     pre.style.color = '#0284c7';
+                });
+            } else {
+                // Restore dark theme
+                body.classList.remove('theme-light');
+                body.classList.add('theme-dark');
+                button.textContent = '☀️ День';
+
+                // Force light colors for dark theme
+                const allElements = document.querySelectorAll('*');
+                allElements.forEach(el => {
+                    const style = el.getAttribute('style') || '';
+                    if (style.includes('color:')) {
+                        // Replace dark colors with light ones
+                        if (style.includes('#f1f5f9') || style.includes('#cbd5e1') || style.includes('#94a3b8')) {
+                            el.style.color = '#cbd5e1';
+                        }
+                    }
+                });
+
+                slides.forEach(slide => {
+                    slide.style.backgroundColor = slide.getAttribute('data-bg-dark') || '#0f172a';
+                    slide.style.color = '#cbd5e1';
+                });
+
+                const cards = document.querySelectorAll('[style*="background-color"]');
+                cards.forEach(card => {
+                    if (card.style.backgroundColor !== '#f1f5f9') {
+                        card.style.backgroundColor = '#1e293b';
+                        card.style.color = '#cbd5e1';
+                    }
+                });
+
+                const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+                headings.forEach(h => h.style.color = '#38bdf8');
+
+                const pres = document.querySelectorAll('pre');
+                pres.forEach(pre => {
+                    pre.style.backgroundColor = '#1e293b';
+                    pre.style.color = '#38bdf8';
                 });
             }
         });
