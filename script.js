@@ -22,6 +22,14 @@ const totalSlides = slides.length;
             card.setAttribute('data-card-bg', bg);
         }
     });
+
+    // Save QR code container backgrounds
+    document.querySelectorAll('[style*="border: 3px solid #38bdf8"]').forEach(qr => {
+        if (!qr.getAttribute('data-bg-dark')) {
+            const bg = qr.style.backgroundColor || getComputedStyle(qr).backgroundColor;
+            qr.setAttribute('data-bg-dark', bg);
+        }
+    });
 })();
 
 function updateSlideView() {
@@ -119,6 +127,12 @@ function toggleTheme() {
             pre.style.border = '1px solid #cbd5e1';
         });
 
+        // QR code containers
+        document.querySelectorAll('[style*="border: 3px solid #38bdf8"]').forEach(qr => {
+            qr.style.borderColor = '#0284c7';
+            qr.style.backgroundColor = '#ffffff';
+        });
+
         localStorage.setItem('theme', 'light');
     } else {
         // Switch to DARK theme
@@ -163,6 +177,15 @@ function toggleTheme() {
             pre.style.border = 'none';
         });
 
+        // Restore QR code containers
+        document.querySelectorAll('[style*="border-color: rgb(2, 132, 199)"], [style*="border: 3px solid"]').forEach(qr => {
+            if (qr.style.borderRadius === '12px') {
+                qr.style.borderColor = '#38bdf8';
+                const bgDark = qr.getAttribute('data-bg-dark');
+                qr.style.backgroundColor = bgDark || '#1e293b';
+            }
+        });
+
         localStorage.setItem('theme', 'dark');
     }
 }
@@ -205,6 +228,12 @@ window.addEventListener('DOMContentLoaded', function() {
             pre.style.backgroundColor = '#f8fafc';
             pre.style.color = '#0284c7';
             pre.style.border = '1px solid #cbd5e1';
+        });
+
+        // QR code containers
+        document.querySelectorAll('[style*="border: 3px solid #38bdf8"]').forEach(qr => {
+            qr.style.borderColor = '#0284c7';
+            qr.style.backgroundColor = '#ffffff';
         });
     }
 });
