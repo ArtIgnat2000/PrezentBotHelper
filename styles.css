@@ -22,6 +22,20 @@ body.theme-dark {
     --color-primary-foreground: #0f172a;
 }
 
+/* LIGHT THEME */
+body.theme-light {
+    --color-bg-base: #ffffff;
+    --color-bg-elevated: #f8fafc;
+    --color-bg-surface: #f1f5f9;
+    --color-bg-muted: #e2e8f0;
+    --color-text-primary: #1e293b;
+    --color-text-secondary: #475569;
+    --color-text-muted: #64748b;
+    --color-text-accent: #0284c7;
+    --color-primary: #0284c7;
+    --color-primary-foreground: #ffffff;
+}
+
 /* Base Styles */
 * {
     margin: 0;

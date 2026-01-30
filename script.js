@@ -79,35 +79,44 @@ function toggleTheme() {
         // Set all slides to light
         slides.forEach(slide => {
             slide.style.backgroundColor = '#ffffff';
-            slide.style.color = '#000000';
+            slide.style.color = '#1e293b';
         });
 
-        // Set all text elements to black
-        document.querySelectorAll('*').forEach(el => {
-            if (el.style.color && el.style.color !== '#0284c7' && el.style.color !== '#38bdf8') {
-                el.style.color = '#000000';
-            }
-        });
-
-        // Force heading colors
-        document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(h => {
+        // Update headings
+        document.querySelectorAll('h1, h2, h3').forEach(h => {
             h.style.color = '#0284c7';
         });
 
-        // Light card backgrounds
-        document.querySelectorAll('[style*="background-color"]').forEach(card => {
-            if (card.style.backgroundColor === '#1e293b' || card.style.backgroundColor === '#020617') {
-                card.style.backgroundColor = '#f1f5f9';
+        // Update paragraph text
+        document.querySelectorAll('p').forEach(p => {
+            if (!p.closest('pre')) {
+                p.style.color = '#475569';
             }
-            if (card.style.color) {
-                card.style.color = '#000000';
+        });
+
+        // Update cards/blocks
+        document.querySelectorAll('[style*="background-color: rgb(30, 41, 59)"], [style*="background-color: #1e293b"]').forEach(card => {
+            card.style.backgroundColor = '#f1f5f9';
+            card.style.color = '#1e293b';
+            
+            // Update nested headings
+            card.querySelectorAll('h3').forEach(h => h.style.color = '#0284c7');
+            // Update nested paragraphs
+            card.querySelectorAll('p').forEach(p => p.style.color = '#475569');
+        });
+
+        // Update slide backgrounds (slides themselves)
+        document.querySelectorAll('[style*="background-color: rgb(15, 23, 42)"], [style*="background-color: #0f172a"], [style*="background-color: #020617"]').forEach(slide => {
+            if (slide.classList.contains('slide')) {
+                slide.style.backgroundColor = '#ffffff';
             }
         });
 
         // Code blocks
         document.querySelectorAll('pre').forEach(pre => {
-            pre.style.backgroundColor = '#f1f5f9';
+            pre.style.backgroundColor = '#f8fafc';
             pre.style.color = '#0284c7';
+            pre.style.border = '1px solid #cbd5e1';
         });
 
         localStorage.setItem('theme', 'light');
@@ -124,35 +133,34 @@ function toggleTheme() {
             slide.style.color = '#f1f5f9';
         });
 
-        // Restore all light text colors
-        document.querySelectorAll('*').forEach(el => {
-            const style = el.getAttribute('style');
-            if (style && style.includes('color:')) {
-                // Headings stay cyan
-                if (el.tagName.match(/H[1-6]/)) {
-                    el.style.color = '#38bdf8';
-                }
-                // Everything else gets light gray, unless it's accent color
-                else if (el.style.color !== '#38bdf8' && el.style.color !== '#0284c7') {
-                    el.style.color = '#cbd5e1';
-                }
+        // Restore headings
+        document.querySelectorAll('h1, h2, h3').forEach(h => {
+            h.style.color = '#38bdf8';
+        });
+
+        // Restore paragraph text
+        document.querySelectorAll('p').forEach(p => {
+            if (!p.closest('pre')) {
+                p.style.color = '#cbd5e1';
             }
         });
 
         // Restore dark card backgrounds
-        document.querySelectorAll('[style*="background-color"]').forEach(card => {
-            if (card.style.backgroundColor === '#f1f5f9') {
-                card.style.backgroundColor = '#1e293b';
-            }
-            if (card.style.color) {
-                card.style.color = '#f1f5f9';
-            }
+        document.querySelectorAll('[style*="background-color: rgb(241, 245, 249)"], [style*="background-color: #f1f5f9"]').forEach(card => {
+            card.style.backgroundColor = '#1e293b';
+            card.style.color = '#f1f5f9';
+            
+            // Restore nested headings
+            card.querySelectorAll('h3').forEach(h => h.style.color = '#38bdf8');
+            // Restore nested paragraphs
+            card.querySelectorAll('p').forEach(p => p.style.color = '#cbd5e1');
         });
 
-        // Code blocks
+        // Restore code blocks
         document.querySelectorAll('pre').forEach(pre => {
             pre.style.backgroundColor = '#1e293b';
             pre.style.color = '#38bdf8';
+            pre.style.border = 'none';
         });
 
         localStorage.setItem('theme', 'dark');
@@ -163,82 +171,40 @@ function toggleTheme() {
 window.addEventListener('DOMContentLoaded', function() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     const savedSlide = parseInt(localStorage.getItem('currentSlide') || '0');
-    const body = document.body;
-    const button = document.querySelector('.theme-toggle');
 
     // Restore slide position
     currentSlideIndex = savedSlide;
     updateSlideView();
 
+    // Apply saved theme
     if (savedTheme === 'light') {
-        body.classList.remove('theme-dark');
-        body.classList.add('theme-light');
-        button.textContent = '🌙 Ночь';
-
-        // Apply light theme to slides
+        // Manually trigger light theme without toggling
+        document.body.classList.remove('theme-dark');
+        document.body.classList.add('theme-light');
+        document.querySelector('.theme-toggle').textContent = '🌙 Ночь';
+        
+        // Apply light theme styles
         slides.forEach(slide => {
             slide.style.backgroundColor = '#ffffff';
-            slide.style.color = '#000000';
+            slide.style.color = '#1e293b';
         });
 
-        // Set all text elements to black
-        const allElements = document.querySelectorAll('*');
-        allElements.forEach(el => {
-            const style = el.getAttribute('style') || '';
-            if (style.includes('color') && !style.includes('#0284c7') && !style.includes('#38bdf8')) {
-                el.style.color = '#000000';
-            }
+        document.querySelectorAll('h1, h2, h3').forEach(h => h.style.color = '#0284c7');
+        document.querySelectorAll('p').forEach(p => {
+            if (!p.closest('pre')) p.style.color = '#475569';
         });
 
-        const cards = document.querySelectorAll('[style*="background-color: #1e293b"]');
-        cards.forEach(card => {
-            card.style.backgroundColor = '#f1f5f9 !important';
-            card.style.color = '#000000 !important';
+        document.querySelectorAll('[style*="background-color: rgb(30, 41, 59)"], [style*="background-color: #1e293b"]').forEach(card => {
+            card.style.backgroundColor = '#f1f5f9';
+            card.style.color = '#1e293b';
+            card.querySelectorAll('h3').forEach(h => h.style.color = '#0284c7');
+            card.querySelectorAll('p').forEach(p => p.style.color = '#475569');
         });
 
-        const pres = document.querySelectorAll('pre');
-        pres.forEach(pre => {
-            pre.style.backgroundColor = '#f1f5f9';
+        document.querySelectorAll('pre').forEach(pre => {
+            pre.style.backgroundColor = '#f8fafc';
             pre.style.color = '#0284c7';
-        });
-    } else {
-        // Restore dark theme
-        body.classList.remove('theme-light');
-        body.classList.add('theme-dark');
-        button.textContent = '☀️ День';
-
-        // Force light colors for dark theme
-        const allElements = document.querySelectorAll('*');
-        allElements.forEach(el => {
-            const style = el.getAttribute('style') || '';
-            if (style.includes('color:')) {
-                // Replace dark colors with light ones
-                if (style.includes('#f1f5f9') || style.includes('#cbd5e1') || style.includes('#94a3b8')) {
-                    el.style.color = '#cbd5e1';
-                }
-            }
-        });
-
-        slides.forEach(slide => {
-            slide.style.backgroundColor = slide.getAttribute('data-bg-dark') || '#0f172a';
-            slide.style.color = '#cbd5e1';
-        });
-
-        const cards = document.querySelectorAll('[style*="background-color"]');
-        cards.forEach(card => {
-            if (card.style.backgroundColor !== '#f1f5f9') {
-                card.style.backgroundColor = '#1e293b';
-                card.style.color = '#cbd5e1';
-            }
-        });
-
-        const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-        headings.forEach(h => h.style.color = '#38bdf8');
-
-        const pres = document.querySelectorAll('pre');
-        pres.forEach(pre => {
-            pre.style.backgroundColor = '#1e293b';
-            pre.style.color = '#38bdf8';
+            pre.style.border = '1px solid #cbd5e1';
         });
     }
 });
