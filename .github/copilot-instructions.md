@@ -1,29 +1,33 @@
-# Copilot instructions — Презентация Telegram Bot
+# Copilot Instructions — Telegram Bot Presentation
 
-Краткое: это одностраничная, самодостаточная HTML-презентация. Весь код (HTML/CSS/JS) находится в `index.htm`. Нет сборки — откройте `index.htm` в браузере для разработки и тестирования.
+Brief: This is a single-file, self-contained HTML presentation. All code (HTML/CSS/JS) resides in `index.htm`. No build process—open `index.htm` in a browser for development and testing.
 
-Что важно знать (коротко):
-- Проект: single-file slideshow — slides находятся в `index.htm` (13 секций `<section class="slide" data-slide-id="X">`).
-- Темы: тёмная/светлая реализованы через CSS-переменные и встроенные стили; переключение темы управляется JS и сохраняется в `localStorage`.
-- Навигация: `currentSlideIndex` в JS + `updateSlideView()` переключает `.hidden` у слайдов; также поддерживается клавиатура и кнопки.
-- Встроенные стили: многие слайды/карточки имеют inline `background-color`/`color` и атрибуты `data-*` с цветами тёмной темы — обновляйте их при изменении темы.
+Key knowledge:
+- Project: Single-file slideshow—slides are in `index.htm` (13 `<section class="slide" data-slide-id="X">` elements).
+- Themes: Dark/light implemented via CSS variables and inline styles; theme switching handled by JS and persisted in `localStorage`.
+- Navigation: `currentSlideIndex` in JS + `updateSlideView()` toggles `.hidden` on slides; supports keyboard and button controls.
+- Inline styles: Many slides/cards have inline `background-color`/`color` and `data-*` attributes for dark theme colors—update these when changing themes.
 
-Примеры файлов и локаций:
-- Главный файл: [index.htm](index.htm)
-- Короткое описание: [README.md](README.md)
+Example files and locations:
+- Main file: [index.htm](index.htm)
+- Styles: [styles.css](styles.css)
+- Scripts: [script.js](script.js)
+- Short description: [README.md](README.md)
 
-Типичные tasks для AI-агента (конкретно для этого репо):
-- Добавить слайд: скопировать `<section class="slide ...">`, увеличить `data-slide-id`, обновить счётчик слайдов в навигации.
-- Обновить тему/цвета: правьте CSS-переменные в `:root` и добавляйте/правьте `data-bg-dark` / `data-color-dark` у элементов с inline-стилями.
-- Исправить JS-навигатор: ориентируйтесь на `updateSlideView()` и на сохранение/восстановление состояния через `localStorage`.
+Typical tasks for AI agents (specific to this repo):
+- Add a slide: Copy an existing `<section class="slide ...">`, increment `data-slide-id`, update slide counter in navigation (e.g., "X/13").
+- Update theme/colors: Edit CSS variables in `:root` and add/update `data-bg-dark` / `data-color-dark` on elements with inline styles.
+- Fix JS navigator: Focus on `updateSlideView()` and state save/restore via `localStorage`.
 
-Conventions и полезные примечания для автогенерации кода:
-- Не выводить серверные/билд-скрипты — их нет.
-- Изменяя визуальный стиль — меняйте как CSS-переменные, так и соответствующие атрибуты `data-*` в элементах с inline-стилями.
-- Для изменений, затрагивающих вид слайда при переключении темы, тестируйте в браузере и обновляйте `localStorage` состояния (чтобы реинициализация показывала изменения).
+Conventions and notes for code generation:
+- No server/build scripts—they don't exist.
+- When changing visual styles, update both CSS variables and corresponding `data-*` attributes on inline-styled elements.
+- For theme-switching changes, test in browser and update `localStorage` state (so page reload shows changes).
 
-Тестирование и проверка изменений:
-- Открыть [index.htm](index.htm) в браузере (devtools для адаптивной проверки: 1024/768/480px).
-- Проверить: навигация (стрелки/кнопки), переключение темы, сохранение положения (обновление страницы), внешний вид карточек/блоков кода.
+Testing and validation:
+- Open [index.htm](index.htm) in browser (use devtools for responsive checks: 1024px/768px/480px).
+- Verify: Navigation (arrows/buttons), theme toggle, state persistence (page refresh), card/code block appearance.
 
-Если нужно обновить эти инструкции — укажите, какие зоны требуются: добавление примеров кода, перевод на английский, или расширение рабочих задач для CI/коммит-правил.
+Additional patterns:
+- Responsive design: CSS media queries adjust layouts for mobile; slides use flexbox with `.row`, `.col`, `.center` classes.
+- Theme toggle: `toggleTheme()` function switches body class and overrides inline styles; initializes `data-*` attributes on load.
