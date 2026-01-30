@@ -24,10 +24,12 @@ const totalSlides = slides.length;
     });
 
     // Save QR code container backgrounds
-    document.querySelectorAll('[style*="border: 3px solid #38bdf8"]').forEach(qr => {
-        if (!qr.getAttribute('data-bg-dark')) {
-            const bg = qr.style.backgroundColor || getComputedStyle(qr).backgroundColor;
-            qr.setAttribute('data-bg-dark', bg);
+    document.querySelectorAll('[style*="border-radius: 12px"]').forEach(qr => {
+        if (qr.style.padding && qr.tagName === 'DIV' && qr.querySelector('img[alt*="QR"]')) {
+            if (!qr.getAttribute('data-bg-dark')) {
+                const bg = qr.style.backgroundColor || getComputedStyle(qr).backgroundColor;
+                qr.setAttribute('data-bg-dark', bg);
+            }
         }
     });
 })();
@@ -128,9 +130,11 @@ function toggleTheme() {
         });
 
         // QR code containers
-        document.querySelectorAll('[style*="border: 3px solid #38bdf8"]').forEach(qr => {
-            qr.style.borderColor = '#0284c7';
-            qr.style.backgroundColor = '#ffffff';
+        document.querySelectorAll('[style*="border-radius: 12px"]').forEach(qr => {
+            if (qr.style.padding && qr.tagName === 'DIV' && qr.querySelector('img[alt*="QR"]')) {
+                qr.style.borderColor = '#0284c7';
+                qr.style.backgroundColor = '#ffffff';
+            }
         });
 
         localStorage.setItem('theme', 'light');
@@ -178,11 +182,11 @@ function toggleTheme() {
         });
 
         // Restore QR code containers
-        document.querySelectorAll('[style*="border-color: rgb(2, 132, 199)"], [style*="border: 3px solid"]').forEach(qr => {
-            if (qr.style.borderRadius === '12px') {
+        document.querySelectorAll('[style*="border-radius: 12px"]').forEach(qr => {
+            if (qr.style.padding && qr.tagName === 'DIV' && qr.querySelector('img[alt*="QR"]')) {
                 qr.style.borderColor = '#38bdf8';
                 const bgDark = qr.getAttribute('data-bg-dark');
-                qr.style.backgroundColor = bgDark || '#1e293b';
+                qr.style.backgroundColor = bgDark || '#0f172a';
             }
         });
 
@@ -231,9 +235,11 @@ window.addEventListener('DOMContentLoaded', function() {
         });
 
         // QR code containers
-        document.querySelectorAll('[style*="border: 3px solid #38bdf8"]').forEach(qr => {
-            qr.style.borderColor = '#0284c7';
-            qr.style.backgroundColor = '#ffffff';
+        document.querySelectorAll('[style*="border-radius: 12px"]').forEach(qr => {
+            if (qr.style.padding && qr.tagName === 'DIV' && qr.querySelector('img[alt*="QR"]')) {
+                qr.style.borderColor = '#0284c7';
+                qr.style.backgroundColor = '#ffffff';
+            }
         });
     }
 });
