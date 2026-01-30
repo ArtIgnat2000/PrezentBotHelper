@@ -299,18 +299,18 @@
 
     <!-- Slide 10: Python Code Example -->
     <section class="slide col center hidden" data-slide-id="10" style="background-color: #0f172a; color: #f1f5f9;">
-        <h2 class="mb-4" style="color: #38bdf8; text-align: left;">Пример кода на Python</h2>
-        <pre style="background-color: #1e293b; color: #38bdf8; padding: 1.5rem; border-radius: 8px; font-size: 0.95rem; overflow-x: auto; margin-top: 1rem;"><code>from telegram import Update
-from telegram.ext import Application
+        <h2 class="mb-4" style="color: #38bdf8; text-align: center;">Пример кода на Python</h2>
+        <pre style="background-color: #1e293b; color: #d4d4d4; padding: 1.5rem; border-radius: 8px; font-size: 0.9rem; overflow-x: auto; margin-top: 1rem; text-align: left; font-family: 'Consolas', 'Monaco', 'Courier New', monospace; line-height: 1.5;"><code><span style="color: #c586c0;">from</span> <span style="color: #4ec9b0;">telegram</span> <span style="color: #c586c0;">import</span> <span style="color: #4ec9b0;">Update</span>
+<span style="color: #c586c0;">from</span> <span style="color: #4ec9b0;">telegram.ext</span> <span style="color: #c586c0;">import</span> <span style="color: #4ec9b0;">Application</span>
 
-async def start(update, context):
-    await update.message.reply_text(
-        'Привет! Я твой помощник 🤖'
+<span style="color: #c586c0;">async</span> <span style="color: #c586c0;">def</span> <span style="color: #dcdcaa;">start</span>(<span style="color: #9cdcfe;">update</span>, <span style="color: #9cdcfe;">context</span>):
+    <span style="color: #c586c0;">await</span> update.message.<span style="color: #dcdcaa;">reply_text</span>(
+        <span style="color: #ce9178;">'Привет! Я твой помощник 🤖'</span>
     )
 
-async def help_command(update, context):
-    await update.message.reply_text(
-        '/start - начало\n/help - помощь'
+<span style="color: #c586c0;">async</span> <span style="color: #c586c0;">def</span> <span style="color: #dcdcaa;">help_command</span>(<span style="color: #9cdcfe;">update</span>, <span style="color: #9cdcfe;">context</span>):
+    <span style="color: #c586c0;">await</span> update.message.<span style="color: #dcdcaa;">reply_text</span>(
+        <span style="color: #ce9178;">'/start - начало\n/help - помощь'</span>
     )</code></pre>
         <div class="slide-counter">10/13</div>
     </section>

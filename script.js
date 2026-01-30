@@ -125,8 +125,8 @@ function toggleTheme() {
         // Code blocks
         document.querySelectorAll('pre').forEach(pre => {
             pre.style.backgroundColor = '#f8fafc';
-            pre.style.color = '#0284c7';
             pre.style.border = '1px solid #cbd5e1';
+            // Keep syntax highlighting colors as is for light theme
         });
 
         // QR code containers
@@ -177,8 +177,8 @@ function toggleTheme() {
         // Restore code blocks
         document.querySelectorAll('pre').forEach(pre => {
             pre.style.backgroundColor = '#1e293b';
-            pre.style.color = '#38bdf8';
             pre.style.border = 'none';
+            // Keep syntax highlighting colors as is for dark theme
         });
 
         // Restore QR code containers
@@ -230,7 +230,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
         document.querySelectorAll('pre').forEach(pre => {
             pre.style.backgroundColor = '#f8fafc';
-            pre.style.color = '#0284c7';
             pre.style.border = '1px solid #cbd5e1';
         });
 
