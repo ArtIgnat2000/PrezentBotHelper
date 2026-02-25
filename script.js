@@ -133,6 +133,7 @@ function toggleTheme() {
         document.querySelectorAll('[style*="border-radius: 12px"]').forEach(qr => {
             if (qr.style.padding && qr.tagName === 'DIV' && qr.querySelector('img[alt*="QR"]')) {
                 qr.style.borderColor = '#0284c7';
+                qr.style.outlineColor = '#0284c7';
                 qr.style.backgroundColor = '#ffffff';
             }
         });
@@ -185,6 +186,7 @@ function toggleTheme() {
         document.querySelectorAll('[style*="border-radius: 12px"]').forEach(qr => {
             if (qr.style.padding && qr.tagName === 'DIV' && qr.querySelector('img[alt*="QR"]')) {
                 qr.style.borderColor = '#38bdf8';
+                qr.style.outlineColor = '#38bdf8';
                 const bgDark = qr.getAttribute('data-bg-dark');
                 qr.style.backgroundColor = bgDark || '#0f172a';
             }
